@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add a Test
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid">
+    <div class="section">
+
+        <h2 class="display-4">Add a Test
+
+
+        </h2>
+        <p>
+
+
+        </p>
+
+        <form action="/add" method="POST">
+            <div class="class=form-row">
+
+            <select name="subject" placeholder="Subject"  required  class="form-control">
+                <option> Subject</option>
+
+                {% for i in subjects %}
+                    <option>{{i["subject"]}}</option>
+                {%endfor%}
+
+            </select>
+            <p>
+
+
+            </p>
+
+            <select name="type" placeholder="Type"  required class="form-control">
+                <option> Type</option>
+
+                {% for i in types %}
+                    <option>{{i["type"]}}</option>
+                {%endfor%}
+
+            </select>
+            </div>
+            <p>
+
+
+            </p>
+            <div class="class=form-row">
+
+                    <input autocomplete="off"  name="marksobt" placeholder = "Marks Obtained" type="number" required class="form-group">
+
+                    <input autocomplete="off"  name="markstot" placeholder = "Marks Total" type="number" required>
+
+            </div>
+            <p>
+
+
+            </p>
+            <div class="class=form-row">
+
+                    <input autocomplete="off"  name="day" placeholder = "Day" type="number" required>
+
+                        <input autocomplete="off"  name="month" placeholder = "Month" type="number" required>
+
+                            <input autocomplete="off"  name="year" placeholder = "Year" type="number" required>
+
+            </div>
+            <p>
+
+
+            </p>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

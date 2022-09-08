@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="section">
+
+        <h2 class="display-4">Sort</h2>
+
+        <form action="/" method="POST">
+            <select name='subject' class="form-select" aria-label="Subject">
+                <option selected>Subject</option>
+                {%for subject in subjects%}
+                <option>{{subject["subject"]}}</option>
+                {%endfor%}
+              </select>
+              <select name="type" class="form-select" aria-label="Type">
+                <option selected>Type</option>
+                {%for type in types%}
+                <option>{{type["type"]}}</option>
+                {%endfor%}
+              </select>
+              <div>
+
+                <select name='marksobtained' class="form-select" aria-label="marksobt">
+                    <option selected>Order by Percentage</option>
+
+                    <option>Ascending</option>
+                    <option>Descending</option>
+
+                  </select>
+                </div>
+                <p>
+
+
+                </p>
+
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+    </div>
+<div class="container-fluid">
+    <div class="section">
+
+        <h2 class="display-4">Your Tests</h2>
+
+
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Subject</th>
+                <th>Type</th>
+                <th>Marks Obtained</th>
+                <th>Marks Total</th>
+                <th>Percentage</th>
+                <th>Date</th>
+                <th>Remove</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for test in rows: %}
+            <tr>
+
+                <td>{{test["id"]}}</td>
+                <td>{{test["subject"]}}</td>
+                <td>{{test["type"]}}</td>
+                <td>{{test["marksobtained"]}}</td>
+                <td>{{test["markstotal"]}}</td>
+                <td>{{'%0.2f' | format((test["marksobtained"]/ test["markstotal"] * 100) | float)}}%</td>
+                <td>{{test["date"]}}/{{test["month"]}}/{{test["year"]}}</td>
+                <td>
+                    <form action="/remove" method="post">
+                        <input name="id" type="hidden" value="{{ test.id }}">
+                        <input type="submit" class="btn btn-danger" value="Remove" onclick="return confirm('Are you sure?')">
+                    </form>
+                </td>
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <table class="table table-hover table-striped">
+        <tbody>
+            <tr>
+                <th scope="row"> Marks Obtained</th>
+                <td>{{obt}}</td>
+            </tr>
+            <tr>
+                <th scope="row"> Total Marks</th>
+                <td>{{tot}}</td>
+            </tr>
+            <tr>
+                <th scope="row"> Percentage</th>
+                <td>{{'%0.2f' | format(percentage|float)}}%</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

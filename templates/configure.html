@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Configure
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="section">
+
+        <h2 class="display-4">Add a Subject</h2>
+
+        <form action="/addsubject" method="POST">
+            <input autocomplete="off" autofocus name="subject" placeholder = "Subject" type="text">
+
+            <input type="submit" value=" Add ">
+        </form>
+    </div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Subject ID</th>
+            <th>Subject</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for subject in subjects: %}
+        <tr>
+
+            <td>{{subject["id"]}}</td>
+            <td>{{subject["subject"]}}</td>
+
+
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+</div>
+<div>
+    <p>
+
+
+
+
+
+
+    </p>
+</div>
+<div class="container">
+    <div class="section">
+
+        <h2 class="display-4">Add a Type</h2>
+
+        <form action="/addtype" method="POST">
+            <input autocomplete="off" autofocus name="type" placeholder = "Type" type="text">
+
+            <input type="submit" value=" Add ">
+        </form>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Type ID</th>
+                <th>Type</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for type in types: %}
+            <tr>
+
+                <td>{{type["id"]}}</td>
+                <td>{{type["type"]}}</td>
+
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
