@@ -1,5 +1,5 @@
 # MarkLogger - A web app that makes it easy to keep track of your marks.
-#### Video Demo: https://youtu.be/VeyqFfF8phM
+
 #### Description
 ## Uses Flask for the backend, sqlite3 for the database and HTML, CSS for the front end.
 ## Files in the project
